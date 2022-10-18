@@ -1,0 +1,75 @@
+{
+  "contractName": "MhShNft",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/MhShNft.sol\":\"MhShNft\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/MhShNft.sol\":{\"keccak256\":\"0x07c87a9c777677057b724060c73eeb43c1a3c6f2d63f53b1dad35b123c645dfe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://db72d1d2284f17eae699789e758d23c81786b814ae37904adc11d204eb8cfc76\",\"dweb:/ipfs/QmNZY8K3kRaVcG5brK3AHBSQDDntiPAf7bgA9t77GiGCM1\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220a4244c67038dc94e64d58fc3fcbcc0129923d15ade4ab2d98d11ea33452e453e64736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220a4244c67038dc94e64d58fc3fcbcc0129923d15ade4ab2d98d11ea33452e453e64736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "59:21:2:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "59:21:2:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.13;\n\ncontract MhShNft {\n\n}",
+  "sourcePath": "/Users/minhyeokkim/Desktop/code/mh/MH-SH-NFT/smart-contracts/contracts/MhShNft.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/MhShNft.sol",
+    "exportedSymbols": {
+      "MhShNft": [
+        115
+      ]
+    },
+    "id": 116,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 114,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "MhShNft",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 115,
+        "linearizedBaseContracts": [
+          115
+        ],
+        "name": "MhShNft",
+        "nameLocation": "68:7:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 116,
+        "src": "59:21:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:47:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-10-17T05:30:27.264Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
