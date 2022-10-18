@@ -1,8 +1,8 @@
-import { MetaMaskEthereumProvider } from "./types";
+import { KaikasProvider, MetaMaskProvider } from "./types";
 
 declare global {
   interface Window {
-    ethereum?: MetaMaskEthereumProvider;
-    klaytn?: any;
+    ethereum?: MetaMaskProvider;
+    klaytn?: KaikasProvider;
   }
 }

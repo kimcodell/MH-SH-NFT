@@ -1,14 +1,19 @@
+import useKaikas from '@hooks/useKaikas';
 import useMetamask from '@hooks/useMetamask'
-import { METAMASK_NETWORK_INTERFACE } from '@utils/constants';
 import type { NextPage } from 'next'
 import { useEffect } from 'react';
 
 const Home: NextPage = () => {
-  const {switchNetwork} = useMetamask();
+  const { deployContract } = useMetamask();
+  const { connect } = useKaikas();
+  useEffect(() => {
+  }, [])
 
   useEffect(() => {
-    switchNetwork('Polygon Testnet', METAMASK_NETWORK_INTERFACE['Polygon Testnet']);
-  }, [switchNetwork])
+    (async () => {
+      await connect();
+    })()
+  }, [connect])
 
   return (
     <div>
