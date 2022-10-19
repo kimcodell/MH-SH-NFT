@@ -3,6 +3,7 @@ import { MetaMaskProvider } from './../utils/types/types';
 import { useMetamaskDispatch, useMetamaskSelector } from "@contexts/metamaskContext";
 import { useCallback, useEffect, useState } from "react";
 import Web3 from 'web3';
+import BigNumber from 'bignumber.js';
 
 const CHAINID = {
   'Ethereum Mainnet': '0x1',
@@ -72,13 +73,23 @@ export default function useMetamask () {
     }
   }, [dispatch, ethereum])
 
-  const deployContract = useCallback(async () => {
+  const deployContract = useCallback(async (params: {abi: any; bytecode: string; args: any[]; from: string}) => {
+    if (!web3) return;
+    const {abi, bytecode, args, from} = params;
+    const contract = new web3.eth.Contract(abi);
+    const result = await contract.deploy({ data: bytecode, arguments: args }).send({from});
+    return result;
+  }, [web3]);
 
-  }, []);
-
-  const callContract = useCallback(async () => {
-
-  }, [])
+  const callContract = useCallback(async (params: {abi: any; contractAddress: string; methodName: string; args: any[]; from: string; value?: string | number | BigNumber}) => {
+    if (!web3) return;
+    const {abi, contractAddress, methodName, args, from, value} = params;
+    const contract = new web3.eth.Contract(abi, contractAddress);
+    const method = contract.methods[methodName];
+    const gas = await method(...args).estimateGas({from, ...(value ? {value} : {})});
+    const result = await method(...args).send({from, gas, ...(value ? {value} : {})});
+    return result;
+  }, [web3]);
 
   useEffect(() => {
     const ethereum = window.ethereum;

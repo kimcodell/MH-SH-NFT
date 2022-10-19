@@ -1,19 +1,30 @@
 import useKaikas from '@hooks/useKaikas';
 import useMetamask from '@hooks/useMetamask'
+import ethereumContractABI from '@utils/contracts/metamask/abi';
+// import ethereumContractBytecode from '@utils/contracts/metamask/bytecode';
 import type { NextPage } from 'next'
 import { useEffect } from 'react';
 
 const Home: NextPage = () => {
-  const { deployContract } = useMetamask();
-  const { connect } = useKaikas();
-  useEffect(() => {
-  }, [])
-
+  const { connect, deployContract, callContract, selectedAddress } = useMetamask();
+  const {  } = useKaikas();
   useEffect(() => {
     (async () => {
       await connect();
+      if (!selectedAddress) return;
+      await callContract({from: selectedAddress, abi: ethereumContractABI, contractAddress: '0xA52a2382C25a44A2e833A533C1E85439398e075e', methodName: 'setSaleInfo', args: [1664899200,
+        1665777600,
+        10000,
+        1000,
+        2,
+        10,
+        5,
+        1,]});
     })()
-  }, [connect])
+  }, [connect, callContract, selectedAddress])
+
+  useEffect(() => {
+  }, [])
 
   return (
     <div>
