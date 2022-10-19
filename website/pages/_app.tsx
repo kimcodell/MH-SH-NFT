@@ -1,11 +1,14 @@
 import type { AppProps } from 'next/app'
 import MetamaskProvider from '@contexts/metamaskContext'
+import KaikasProvider from '@contexts/kaikasContext';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MetamaskProvider>
-      <Component {...pageProps} />
+      <KaikasProvider>
+        <Component {...pageProps} />
+      </KaikasProvider>
     </MetamaskProvider>
   );
 }
