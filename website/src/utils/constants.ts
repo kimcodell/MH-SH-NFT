@@ -25,3 +25,5 @@ export const METAMASK_NETWORK_INTERFACE = {
     blockExplorerUrls: ['https://polygonscan.com'],
   },
 };
+
+const StoredInIPFSImage = 'https://ipfs.io/ipfs/Qma4S61uVJs6rNtHVZLHP8ucFAfKfYwtj9zS7oFpwKhLzF';
