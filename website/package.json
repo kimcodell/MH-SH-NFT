@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "bignumber.js": "^9.1.0",
     "caver-js": "^1.9.0",
-    "web3": "^1.8.0",
+    "ipfs-core": "^0.16.1",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ipfs-core": "^0.16.1"
+    "web3": "^1.8.0"
   },
   "devDependencies": {
     "@types/node": "18.11.0",

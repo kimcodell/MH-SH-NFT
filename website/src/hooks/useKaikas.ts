@@ -26,6 +26,7 @@ export default function useKaikas () {
     try {
       await klaytn.enable();
       dispatch({type: 'SET_IS_CONNECTED', data: true});
+      dispatch({type: 'SET_WALLET_ADDRESS', data: klaytn.selectedAddress});
     } catch (error) {
       dispatch({type: 'SET_IS_CONNECTED', data: false});
       console.error(error);
