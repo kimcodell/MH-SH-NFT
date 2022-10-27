@@ -59,9 +59,11 @@ const Home: NextPage = () => {
   }, [switchNetwork]);
 
   const onConnect = useCallback(async () => {
-    await connect();
-    setInputAddress(currentWalletAddress || 'null');
-  }, [connect, currentWalletAddress]);
+    const address = await connect();
+    setTimeout(() => {
+      setInputAddress(address || 'null');
+    }, 500);
+  }, [connect]);
 
   const [imageUrl, setImageUrl] = useState('');
 

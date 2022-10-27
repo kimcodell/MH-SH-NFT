@@ -28,13 +28,15 @@ export default function useWallet() {
         console.log('지갑 네트워크와 선택된 네트워크가 일치하지 않습니다.');
         throw new Error('지갑 네트워크와 선택된 네트워크가 일치하지 않습니다.');
       }
-      await connectKaikas();
+      const address = await connectKaikas();
+      return address;
     } else {
       if (currentNetwork !== metamaskNetwork) {
         console.log('지갑 네트워크와 선택된 네트워크가 일치하지 않습니다.');
         throw new Error('지갑 네트워크와 선택된 네트워크가 일치하지 않습니다.');
       }
-      await connectMetamask();
+      const address = await connectMetamask();
+      return address;
     }
   }, [currentNetwork, connectKaikas, connectMetamask, kaikasNetwork, metamaskNetwork]);
 
