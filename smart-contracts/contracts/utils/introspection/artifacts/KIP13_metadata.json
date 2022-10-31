@@ -1,0 +1,78 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Implementation of the {IKIP13} interface. Contracts that want to implement KIP13 should inherit from this contract and override {supportsInterface} to check for the additional interface id that will be supported. For example: ```solidity function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {     return interfaceId == type(MyInterface).interfaceId || super.supportsInterface(interfaceId); } ``` Alternatively, {KIP13Storage} provides an easier to use but more expensive implementation.",
+			"kind": "dev",
+			"methods": {
+				"supportsInterface(bytes4)": {
+					"details": "See {IKIP13-supportsInterface}."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/utils/introspection/KIP13.sol": "KIP13"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/utils/introspection/IKIP13.sol": {
+			"keccak256": "0xac3dc1d9dc1fd0efd5ecf0600e1dc0e4792aefb1c3235199552237f28a4c3671",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bf60c3c281d9a9fb22c791f63e24230eb1626a53db7448bd0fb31948945e4cb3",
+				"dweb:/ipfs/QmXzPvVhpxrMtbLXiXaCRceiEWv1kzE3ekunu1UPXHGgYb"
+			]
+		},
+		"contracts/utils/introspection/KIP13.sol": {
+			"keccak256": "0xb9de5c7b8b938958e021782e9d38b7a465ad97b375f986524aa23a0bb1870f1a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ae93e0125dc3fadf997536be8f17c84a6cf7438b4edc7264a0ba8479f36f0ec3",
+				"dweb:/ipfs/QmQDaDZKzFYiGWZNbBPyHVzQdnQLwsv4CaPxWhK4cdRQT4"
+			]
+		}
+	},
+	"version": 1
+}

@@ -49,9 +49,38 @@ export default function useKaikas () {
     return result;
   }, [caver, selectedAddress]);
 
-  const callContract = useCallback(async () => {
+  const callContract = useCallback(async (params: {
+    abi: {
+      constant?: boolean;
+      name: string;
+      type: string;
+      inputs: { type: string; name: string }[];
+      outputs?: { type: string; name: string }[];
+    };
+    value?: any;
+    args: any[];
+    contractAddress: string;}) => {
+      if (!caver || !klaytn) return;
+      const { abi, args, contractAddress, value } = params;
 
-  }, [])
+      const data = caver.klay.abi.encodeFunctionCall(abi, [...args]);
+      const from = klaytn.selectedAddress;
+      console.log({ contractAddress, from, value, data });
+      const gas = await caver.rpc.klay.estimateGas({ to: contractAddress, from, input: data }).catch((err) => {
+        console.error(err);
+        return '8000000';
+      });
+      console.log({ gas });
+      const response = await caver.klay.sendTransaction({
+        type: 'SMART_CONTRACT_EXECUTION',
+        from,
+        to: contractAddress,
+        gas,
+        data,
+        value,
+      });
+      return response;
+  }, [caver, klaytn])
 
   useEffect(() => {
     const klaytn = window.klaytn;
