@@ -43,6 +43,7 @@ export default function useMetamask () {
         return;
       }
       dispatch({type: 'SET_WALLET_ADDRESS', data: accounts[0]});
+      return accounts[0];
     } catch (error) {
       dispatch({type: 'SET_IS_CONNECTED', data: false});
       console.error(error);

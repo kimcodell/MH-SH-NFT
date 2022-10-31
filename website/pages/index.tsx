@@ -15,9 +15,9 @@ import useWallet from "@hooks/useWallet";
 const Home: NextPage = () => {
   const walletDispatch = useWalletDispatch();
 
-  const {currentNetwork, currentWalletAddress, connect} = useWallet();
+  const { currentNetwork, currentWalletAddress, connect } = useWallet();
   const { deployContract, switchNetwork, callContract, selectedAddress, currentNetwork: metamaskNetwork } = useMetamask();
-  const {currentNetwork: kaikasNetwork} = useKaikas();
+  const { currentNetwork: kaikasNetwork, callContract: callKlaytnContract } = useKaikas();
 
   const [ipfs, setIpfs] = useState<IIPFS | null>(null);
 
@@ -59,9 +59,11 @@ const Home: NextPage = () => {
   }, [switchNetwork]);
 
   const onConnect = useCallback(async () => {
-    await connect();
-    setInputAddress(currentWalletAddress || 'null');
-  }, [connect, currentWalletAddress]);
+    const address = await connect();
+    setTimeout(() => {
+      setInputAddress(address || 'null');
+    }, 500);
+  }, [connect]);
 
   const [imageUrl, setImageUrl] = useState('');
 
@@ -74,6 +76,125 @@ const Home: NextPage = () => {
   }, [ipfs]);
 
   const [inputAddress, setInputAddress] = useState('');
+
+  const onMintEtherERC20 = async () => {
+    const result = await callContract({
+      abi: [{
+        inputs: [
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          }
+        ],
+        name: "mint",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      }],
+      methodName: 'mint',
+      contractAddress: '0x98698E8b812031368791A2Da7cE61e4553bdFe39',
+      args: [10000],
+      from: currentWalletAddress || '',
+    });
+    console.log('result', result);
+  };
+
+  const onMintEtherERC721 = async () => {
+    const result = await callContract({
+      abi: [{
+				inputs: [
+					{
+						internalType: "uint256",
+						name: "applyAmount",
+						type: "uint256"
+					}
+				],
+				name: "mintMutipleToken",
+				stateMutability: "nonpayable",
+				outputs: [],
+				type: "function"
+			}],
+      args: [100],
+      contractAddress: '0x9716d2dE63E594995A5453ba1994e67E63FCaB20',
+      methodName: 'mintMutipleToken',
+      from: currentWalletAddress || '',
+    });
+    console.log('result', result);
+  };
+
+  const onMintPolygonERC20 = async () => {
+    const result = await callContract({
+      abi: [{
+        inputs: [
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          }
+        ],
+        name: "mint",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      }],
+      methodName: 'mint',
+      contractAddress: '0x1f3606e66ED4692D23D6E4AB996fb73D3B4cEAe7',
+      args: [1000000],
+      from: currentWalletAddress || '',
+    });
+    console.log('result', result);
+  }
+
+  const onMintPolygonERC721 = async () => {
+    const result = await callContract({
+      abi: [{
+				inputs: [
+					{
+						internalType: "uint256",
+						name: "applyAmount",
+						type: "uint256"
+					}
+				],
+				name: "mintMutipleToken",
+				stateMutability: "nonpayable",
+				outputs: [],
+				type: "function"
+			}],
+      args: [100],
+      contractAddress: '0x5BA6BE5Bdcd5cF38C2BFB29509Baa427548A783B',
+      methodName: 'mintMutipleToken',
+      from: currentWalletAddress || '',
+    });
+    console.log('result', result);
+  }
+
+  const onMintKlaytnCampaign = useCallback(async () => {
+    const result = await callKlaytnContract({
+      abi: {
+        constant: false,
+        inputs: [
+          {
+            name: "addresses",
+            type: "address[]"
+          },
+          {
+            name: "amounts",
+            type: "uint256[]"
+          }
+        ],
+        name: "mintTo",
+        outputs: [],
+        type: "function"
+      },
+      contractAddress: '0xfF95e7b249CDC80c9e081F27eE110fB7253bF709',
+      args: [
+        ['0x4842923020fB0732F395C99bE5F49831199BB03C'],
+        ['13'],
+      ],
+    });
+    console.log('result', result);
+  }, [callKlaytnContract]);
 
   useEffect(() => {
     console.log('초기화');
@@ -105,6 +226,14 @@ const Home: NextPage = () => {
         <input type="file" accept="image/png, image/jpg, image/jpeg, image/gif" onChange={onUploadImageIPFS} />
         {imageUrl && <a href={imageUrl} target='blank'>{imageUrl}</a>}
         {/* <Modal open><>123123</></Modal> */}
+
+        {/* <ButtonShort label="민팅 클레이튼 토큰" onClick={onMintKlaytnKIP7}/> */}
+        <ButtonShort label="민팅 이더리움 토큰" onClick={onMintEtherERC20}/>
+        <ButtonShort label="민팅 폴리곤 토큰" onClick={onMintPolygonERC20}/>
+
+        <ButtonShort label="민팅 클레이튼 NFT" onClick={onMintKlaytnCampaign}/>
+        <ButtonShort label="민팅 이더리움 NFT" onClick={onMintEtherERC721}/>
+        <ButtonShort label="민팅 폴리곤 NFT" onClick={onMintPolygonERC721}/>
       {/* <Head>
         <title>Create Next App</title>
         <meta name="description" content="Generated by create next app" />

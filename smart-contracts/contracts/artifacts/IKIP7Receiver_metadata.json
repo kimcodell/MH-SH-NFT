@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "onKIP7Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"onKIP7Received(address,address,uint256,bytes)": {
+					"details": "Whenever an {IKIP7} `amount` is transferred to this contract via {IKIP7-safeTransfer} or {IKIP7-safeTransferFrom} by `operator` from `from`, this function is called. {onKIP7Received} must return its Solidity selector to confirm the token transfer. If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted. The selector can be obtained in Solidity with `IKIP7Receiver.onKIP7Received.selector`."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IKIP7Receiver.sol": "IKIP7Receiver"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/IKIP7Receiver.sol": {
+			"keccak256": "0x4ce5a3da376b3f6e0be2a02d0e1fd784918029dadf456fff55a9ab6cd256259c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b631bcfe96e35e9d19fd523d35a995a028ce1cb903016a6e1994797e5530aaf0",
+				"dweb:/ipfs/QmShJ3v7PAwDEjkHkWfCbH5hAmbCBYfsNXdJAZmGz2f8TV"
+			]
+		}
+	},
+	"version": 1
+}
